@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Read the commit message file passed by Git
+commit_msg=$(cat "$1")
+
+# Regex matching: type(subject): message
+# Allowed types: chore, fix, feat, refactor
+pattern="^(chore|fix|feat|refactor)(\(.+\))?: .+$"
+
+# Validate message against regex using awk or grep
+if ! echo "$commit_msg" | grep -qE "$pattern"; then
+    echo "Error: Commit message does not match required format."
+    echo "Format: type(subject): message"
+    echo "Example: chore(setup): initalise hooks for repo"
+    exit 1
+fi
+
+exit 0
