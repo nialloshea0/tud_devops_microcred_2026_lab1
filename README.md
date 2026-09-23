@@ -41,3 +41,20 @@ To fix this:
 
 1. Run `chmod +x .githooks/commit-msg`
 2. Run `git config core.hooksPath .githooks`
+
+
+----
+
+# Creating unit tests
+
+### Creating project
+
+```
+dotnet new mstest -o bmi2021.MSTests
+dotnet sln add bmi2021.MSTests/bmi2021.MSTests.csproj 
+dotnet add bmi2021.MSTests/bmi2021.MSTests.csproj reference bmi2021/bmi2026.csproj 
+```
+
+### Running tests
+
+`dotnet test`
